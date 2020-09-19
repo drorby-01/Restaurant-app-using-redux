@@ -20,17 +20,21 @@ export default function mealsReducer(
   switch (action.type) {
     case ACTIONS.ADD_MEAL: {
       const { payload } = action;
+      console.log(`A new order is being get ${payload.name}`)
       return { ...state, orders: [...state.orders, payload] };
     }
     case ACTIONS.GET_MEALS_FROM_SERVER_DONE: {
       const { payload } = action;
       return { ...state, meals: payload };
     }
-    case "REMOVE_MEAL": {
+    case ACTIONS.REMOVE_MEAL: {
       const { payload } = action;
       // find index blabla // delete
-      const newOrders = [...state.orders];
-      return { ...state, orders: [...newOrders] };
+      console.log(payload)
+      return { ...state, orders: payload };
+    }
+    case ACTIONS.REMOVE_All_MEAL:{
+      return {...state,orders:[]}
     }
     default: {
       console.log("i am here! this is not your reducer!!");

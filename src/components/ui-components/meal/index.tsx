@@ -9,6 +9,7 @@ export interface IMeal {
   image: string;
   action: Function;
   actionTitle: string;
+  actionComponent:any;
   cls: string;
   rating: number;
 }
@@ -32,9 +33,10 @@ export default function Meal(props: IMeal) {
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
-        <Button variant={props.cls || "primary"} onClick={onAction}>
+        {/* <Button variant={props.cls || "primary"} onClick={onAction}>
           {props.actionTitle}
-        </Button>
+        </Button> */}
+        {props.actionComponent}
         <Rating stars={props.rating} />
       </Card.Body>
     </Card>
