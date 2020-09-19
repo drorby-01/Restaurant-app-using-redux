@@ -9,10 +9,9 @@ export default function ConfigurationPage() {
   // [state,dispatch] = useContext(SomeContext)
   const state = useSelector((state: any) => state.configReducer);
   const dispatch = useDispatch();
+  
   const { starsColor, imageSize } = state;
-  function onColorChange(color: string): void {
-    dispatch(changeStarsColor(color));
-  }
+ 
 
   const configButtonsColor = [
     "red",
@@ -54,6 +53,7 @@ export default function ConfigurationPage() {
     action: Function;
     value: number;
   }
+
   function ImageRange(props: IProps) {
     return (
       <Form>
@@ -71,16 +71,19 @@ export default function ConfigurationPage() {
     );
   }
 
+
   function ButtonWrapper(props: { color: string }) {
+    const dispatch = useDispatch()
     const { color } = props;
     return (
       <Button
         onClick={() => {
-          onColorChange(color);
+          dispatch(changeStarsColor(color))
         }}
         variant="primary"
         size="lg"
         active
+        key={color}
       >
         {color}
       </Button>
